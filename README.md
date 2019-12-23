@@ -12,6 +12,8 @@ to build and run it.
 
 ## installation
 Run commands:  
+git clone https://github.com/kartsa007/heatmap.git  
+cd heatmap  
 npm install  
 npm run build   
 npm run start 
