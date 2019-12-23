@@ -4,6 +4,9 @@
   "description": "Heatmap demo",
   "main": "index.js",
   "scripts": {
+    "build": "npx webpack",
+    "start": "src/server/index.js",
+    "fill": "sh scripts/test.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

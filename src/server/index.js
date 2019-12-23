@@ -29,7 +29,7 @@ koaApp.use(async (ctx) => {
   if (ctx.path === '/') {
     ctx.path = '/index.html';
   }
-  const fileRoot = path.resolve(__dirname, '../../../dist');
+  const fileRoot = path.resolve(__dirname, '../../dist');
   try {
     await send(ctx, ctx.path, { root: fileRoot });
   } catch (error) {
@@ -62,9 +62,9 @@ const parseData = (data) => {
 
 const heatmapUpdater = () => {
   fs.readFile(dataFile, (err, data) => {
-    if (!err) {
-      debug('Heatmap updated');
-      heatmapData = data;
+    if (err) {
+      debug('Heatmap update error');
+      return;
     }
     heatmapData = JSON.stringify(parseData(data.toString()));
     app.ws.server.clients.forEach((client) => {
@@ -86,7 +86,7 @@ fs.readFile(dataFile, (err, data) => {
   } else {
     debug(__dirname);
     debug(`Data file ${dataFile} exists`);
-    heatmapData = data;
+    heatmapData = JSON.stringify(parseData(data.toString()));
   }
   debug(`Start watching ${__dirname}/${dataFile}`);
   fs.watch(dataFile, heatmapUpdater);
