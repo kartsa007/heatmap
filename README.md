@@ -3,9 +3,11 @@
 
 This software was build and tested in Linux(Gentoo).
 You need
+
 node, at least version 12  
 and  
-npx  
+npx 
+
 to build and run it.
 
 ## installation
